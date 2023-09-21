@@ -1,0 +1,354 @@
+* {
+  color: #F5F5F5;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+
+}
+
+.flex_main {
+  display: flex;
+}
+
+.row_flex {
+  display: flex;
+  flex-direction: column;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+  /* border: 5px solid red;  */
+  width: 100%;
+}
+
+
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+#back1 {
+  background-color: #292D32;
+}
+
+@media only screen and (min-width:600px) {
+  .col-1 {
+    width: 8.33%;
+  }
+
+  .col-2 {
+    width: 16.66%;
+  }
+
+  .col-3 {
+    width: 25%;
+  }
+
+  .col-4 {
+    width: 33.33%;
+
+  }
+
+  .col-5 {
+    width: 41.66%;
+  }
+
+  .col-6 {
+    width: 50%;
+
+  }
+
+  .col-7 {
+    width: 58.33%;
+
+  }
+
+  .col-8 {
+    width: 66.66%;
+
+  }
+
+  .col-9 {
+    width: 75%;
+
+  }
+
+  .col-10 {
+    width: 83.33%;
+  }
+
+  .col-11 {
+    width: 91.66%;
+  }
+
+  .col-12 {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width:790px) {
+  .col-1 {
+    width: 8.33%;
+  }
+
+  .col-2 {
+    width: 16.66%;
+  }
+
+  .col-3 {
+    width: 25%;
+  }
+
+  .col-4 {
+    width: 33.33%;
+
+  }
+
+  .col-5 {
+    width: 41.66%;
+  }
+
+  .col-6 {
+    width: 50%;
+
+  }
+
+  .col-7 {
+    width: 58.33%;
+
+  }
+
+  .col-8 {
+    width: 66.66%;
+
+  }
+
+  .col-9 {
+    width: 75%;
+
+  }
+
+  .col-10 {
+    width: 83.33%;
+  }
+
+  .col-11 {
+    width: 91.66%;
+  }
+
+  .col-12 {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .menu1 {
+    display: inline-block;
+    padding-right:20px ;
+    margin-top: 40px;
+  }
+
+  #menu1_ {
+    margin-left: 70px;
+  }
+.playlist_back{
+      margin-top: -20px;
+}
+  .nav_main1{
+    background-color: #2c4d6c6e !important;
+    height: 200px;
+}
+  .logo {
+  margin-left: 290px;
+  opacity: 50%;
+}
+.cancion_put{
+  margin: 0 auto;
+  width: 55%;
+}
+.cancion_put p{
+  
+  margin-top: 10px;
+  font-size: 17px;
+  background-color: #2c4d6c73;
+  padding: 10px;
+  border-radius: 15px;
+  padding-left: 50px;
+}
+.cancion_put span{
+  margin-right: 50px;
+  float: right;
+}
+summary{
+  margin-top: 20px;
+  padding: 10px;
+}
+.cancion{
+  border: red;
+}
+#prueba{
+  width: 200px;
+  
+}
+.invisible{
+  display: none;
+}
+#flecha_slider_Iz{
+  position: relative;
+  bottom: 252px;
+  font-size: 30px;
+}
+
+#flecha_slider_D{
+  position: relative;
+  float: right;
+  bottom: 252px;
+  font-size: 30px;
+}
+#img_songs{
+  
+  animation: rotation 7s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.formulario_inputs{
+  margin: 0 auto; display: block;width: 50%;background-color: #ffffff00;
+  margin-top: 20px;
+  border: none;
+  border-bottom: 2px solid #2c4d6c6e;
+
+  transition: 1s ;
+}
+.formulario_inputs:focus{
+  border: 2px solid #2c4d6ce7;
+}
+.cancion_put{
+  width: 90%;
+}
+.visible{
+  display:inline-block;
+  margin-right:3px;
+}
+
+  .col-1 {
+    width: 8.33%;
+  }
+
+  .col-2 {
+    width: 16.66%;
+  }
+
+  .col-3 {
+    width: 25%;
+  }
+
+  .col-4 {
+    width: 33.33%;
+
+  }
+
+  .col-5 {
+    width: 41.66%;
+  }
+
+  .col-6 {
+    width: 50%;
+
+  }
+
+  .col-7 {
+    width: 58.33%;
+
+  }
+
+  .col-8 {
+    width: 66.66%;
+
+  }
+
+  .col-9 {
+    width: 75%;
+
+  }
+
+  .col-10 {
+    width: 83.33%;
+  }
+
+  .col-11 {
+    width: 91.66%;
+  }
+
+  .col-12 {
+    width: 100%;
+  }
+
+}
+
+@media only screen and (min-width: 1300px) {
+  .menu1 {
+    display: inline-block;
+  }
+
+  .col-1 {
+    width: 8.33%;
+  }
+
+  .col-2 {
+    width: 16.66%;
+  }
+
+  .col-3 {
+    width: 25%;
+  }
+
+  .col-4 {
+    width: 33.33%;
+
+  }
+
+  .col-5 {
+    width: 41.66%;
+  }
+
+  .col-6 {
+    width: 50%;
+
+  }
+
+  .col-7 {
+    width: 58.33%;
+
+  }
+
+  .col-8 {
+    width: 66.66%;
+
+  }
+
+  .col-9 {
+    width: 75%;
+
+  }
+
+  .col-10 {
+    width: 83.33%;
+  }
+
+  .col-11 {
+    width: 91.66%;
+  }
+
+  .col-12 {
+    width: 100%;
+  }
+}
