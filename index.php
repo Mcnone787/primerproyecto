@@ -59,7 +59,8 @@
             mira la web xd mira la musica xd xdxxd</p>";
        
           }else{
-          foreach (glob("playlist/*.json") as  $ficheros) {
+          $i_main=0;
+            foreach (glob("playlist/*.json") as  $ficheros) {
             $prueba1=file_get_contents($ficheros);
             $prueba2=json_decode($prueba1,true);
             $infoextension=pathinfo(basename($ficheros));
@@ -68,14 +69,14 @@
             echo "
             <details>
             
-            <summary>".$playlist_sinextension ."</summary>
+            <summary class='playlist_'>".$playlist_sinextension ."</summary>
             ";
             
             for($i=0;$i<count($prueba2["titulo_cancion"]);$i++){
               if($prueba2["titulo_cancion"][$i]==null){
 
               }else{
-                echo "<p id=".$playlist_sinextension." class='cancion'>".$prueba2["titulo_cancion"][$i]."</p>"  ;  
+                echo "<p class='cancion'>".$prueba2["titulo_cancion"][$i]."</p>"  ;  
               }
             }
             echo "</details>";
@@ -200,8 +201,16 @@
 </div>
       </div>
   </div>
+  
+ <script>
  
-  <script src="script.js"></script>
+ 
+
+</script>
+  <script src="script.js">
+
+
+  </script>
  <script src="imgs_y_imgsmusica.js"></script>
  <script src="paginacion_canciones.js"></script>
  
