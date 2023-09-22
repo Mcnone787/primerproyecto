@@ -10,7 +10,7 @@ let start_pausa=false
 let titulo_cancion
 let titulo_cancion_ant
 let interval_main
-
+let cancion_index=0
 
 // <i class="fa-solid fa-pause"></i>
 btn_start_end.addEventListener("click",musica)
@@ -21,8 +21,14 @@ btn_start_end.addEventListener("click",musica)
     switch(ClassBtn){
         case "fa-solid fa-play":
         if(titulo_cancion!=titulo_cancion_ant && titulo_cancion!=""){
-            audio.src = "https://dl.dropbox.com/scl/fi/987v9h1szj5hk6iwkdybh/Domestic-Girlfriend-Opening.mp3?rlkey=od6nli4f163sgkg5s3h2hcfnh&dl=0";
-            titulo_cancion_ant=titulo_cancion
+            if(jsonJS.titulo_cancion.indexOf(titulo_cancion)==-1){
+
+            }else{
+                cancion_index=jsonJS.titulo_cancion.indexOf(titulo_cancion)
+                audio.src = jsonJS.cancionssrc[cancion_index]
+                titulo_cancion_ant=titulo_cancion
+            }
+          
             
         }
         start_pausa=true
@@ -48,14 +54,10 @@ for(i=0;i<cancionesclick.length;i++){
     cancionesclick[i].addEventListener("click",(e)=>{
         nombrecancion=e.currentTarget.textContent
         titulo_cancion= nombrecancion
-        div_global.className+=" invisible"
-        div_rep.classList.remove("invisible")
+
     })
 }
-btn_cerrar_rep.addEventListener("click",()=>{
-    div_rep.className+=" invisible"
-        div_global.classList.remove("invisible")
-})
+
 barra_audio.addEventListener("click",()=>{
     let value_=barra_audio.value
     audio.currentTime=value_
@@ -84,16 +86,9 @@ let playlistClicked=document.querySelectorAll(".playlist_");
 let playlist
 playlistClicked.forEach(i=>{
   i.addEventListener("click",()=>{
-
-    const nextURL = "http://localhost:8080/index.php?prueba=2";
-    const nextTitle = 'My new page title';
-    const nextState = { additionalInformation: 'Updated the URL with JS' };
-    
-    // This will create a new entry in the browser's history, without reloading
-    window.history.pushState(nextState, nextTitle, nextURL);
-    
-    // This will replace the current entry in the browser's history, without reloading
-    window.history.replaceState(nextState, nextTitle, nextURL);
+    playlist=i.textContent
    })
 })
+
+
 

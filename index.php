@@ -66,20 +66,8 @@
             $infoextension=pathinfo(basename($ficheros));
             $playlist_sinextension=basename($ficheros,'.'.$infoextension['extension']);
             
-            echo "
-            <details>
+            echo "<a href='pages/reproductor.php?playlist=".$playlist_sinextension."'><p class='playlist_' style='text-align:center   ;'>".$playlist_sinextension ."</p></a>";
             
-            <summary class='playlist_'>".$playlist_sinextension ."</summary>
-            ";
-            
-            for($i=0;$i<count($prueba2["titulo_cancion"]);$i++){
-              if($prueba2["titulo_cancion"][$i]==null){
-
-              }else{
-                echo "<p class='cancion'>".$prueba2["titulo_cancion"][$i]."</p>"  ;  
-              }
-            }
-            echo "</details>";
           }
         }
        ?>
@@ -109,6 +97,8 @@
        $count=0;
        $fechas = array();
       $srcs = array();
+    
+   
       foreach(glob("songs/*.json") as $nombrescanciones){
           array_push($fechas,filemtime($nombrescanciones));
           array_push($srcs,$nombrescanciones);
@@ -174,43 +164,18 @@
     </div>
     </div>
     
-    <div class="col-9 invisible" style="padding:0;border-left: 2px solid gray;" id="div_repr">
-      <i class="fa-solid fa-circle-xmark" style="float: right; font-size: 25px; margin-top: 20px;margin-right: 20px;" id="btn_repro_cerrar"></i>
-      <div style="margin-top: 50px;">
-        <center> <img src="imgs/pink-floyd-dark-side-of-the-moon-portada-significado.jpg" height="auto" width="65%" style="clip-path: circle();" 
-        id="img_songs"></center>
-    </div>
-    
-    
-    
-    
-    <div class="row" style="height: 100px;
-    z-index: 2;
-    width: 100%;
-    background-color: #2c4d6c6e;
-    margin-top: 100px;
-    border-radius: 10px;border: solid 1px red;">
-      <div class="col-3"></div>
-      <div class="col-6">
-<i class="fa-solid fa-backward" style="margin-right: 20px;"></i>
-<i class="fa-solid fa-play" id="btn_start"></i>
-<input type="range" id="prueba" value="0" max="283.08898" >
-<i class="fa-solid fa-forward" style="margin-left: 20px;"></i>
-</div>
-<div class="col-3"></div>
-</div>
-      </div>
+   
   </div>
   
- <script>
- 
- 
 
-</script>
   <script src="script.js">
 
 
   </script>
+  <script>
+
+  </script>
+
  <script src="imgs_y_imgsmusica.js"></script>
  <script src="paginacion_canciones.js"></script>
  
