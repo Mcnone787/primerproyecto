@@ -76,7 +76,7 @@
       <a href="../index.php"><i class="fa-solid fa-circle-xmark" style="float: right; font-size: 25px; margin-top: 20px;margin-right: 20px;" id="btn_repro_cerrar"></i></a>
       <div style="margin-top: 50px;">
         <center> <img src="../imgs/pink-floyd-dark-side-of-the-moon-portada-significado.jpg" height="auto" width="65%" style="clip-path: circle();" 
-        id="img_songs"></center>
+        id="img_songs" ></center>
     </div>
     
     
@@ -87,13 +87,13 @@
     width: 100%;
     background-color: #2c4d6c6e;
     margin-top: 100px;
-    border-radius: 10px;border: solid 1px red;">
+    border-radius: 10px;">
       <div class="col-3"></div>
       <div class="col-6">
 <i class="fa-solid fa-backward" style="margin-right: 20px;" id="back"></i>
 <i class="fa-solid fa-play" id="btn_start" ></i>
 <input type="range" id="prueba" value="0" max="283.08898" >
-<i class="fa-solid fa-circle-stop"></i>
+<i class="fa-solid fa-circle-stop" style="margin-right: 20px;font-size: 20px;margin-left: 20px;"></i>
 <i class="fa-solid fa-shuffle"></i>
 <i class="fa-solid fa-forward" style="margin-left: 20px;" id="next"></i>
 </div>  

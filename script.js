@@ -13,6 +13,7 @@ let index_anterior_cancion
 let backbtn=document.getElementById("back")
 let elementcancionsonando
 let cambioscolorant
+let imgsongsrep=document.getElementById("img_songs")
 // <i class="fa-solid fa-pause"></i>
 
 btn_start_end.addEventListener("click",musica)
@@ -22,6 +23,9 @@ btn_start_end.addEventListener("click",musica)
     switch(ClassBtn){
         case "fa-solid fa-play":
             btn_start.className="fa-solid fa-pause"
+            if(cancion_index==0){
+                playing_music()
+            }
 
             playmusic()
         break;
@@ -117,10 +121,13 @@ function playing_music(){
     interval_main=setInterval(barra,1000)
 }
 function playmusic(){
+    imgsongsrep.style.animationPlayState="running"
+
     audio.play()
 }
 
 function stopmusic(){
     btn_start.className="fa-solid fa-play"
+    imgsongsrep.style.animationPlayState="paused"
     audio.pause()
 }

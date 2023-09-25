@@ -93,7 +93,7 @@
       <div class="cancion_put" style="">
        <?php
        $i_main=1;
-       $salto_depaginas=5 ;
+       $salto_depaginas=7 ;
        $count=0;
        $fechas = array();
       $srcs = array();
