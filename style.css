@@ -6,7 +6,9 @@
   word-wrap: break-word;
 
 }
-
+a{
+  text-decoration: none;
+}
 .flex_main {
   display: flex;
 }
@@ -238,7 +240,12 @@ summary{
   display:inline-block;
   margin-right:3px;
 }
-
+.playlist_{
+  margin-top: 20px;
+  background-color: #2c4d6c6e;
+  border-radius: 10px;
+  padding: 5px; 
+}
   .col-1 {
     width: 8.33%;
   }

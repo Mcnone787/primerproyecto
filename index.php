@@ -37,7 +37,7 @@
   <div class="row playlist_back">
     <div class="col-3" style="border-top: 2px  gray solid;">
       <h2 style="text-align: center;">PlayLists </h2>
-      <details >
+      <!-- <details >
         <summary>Playlist1</summary>
         <div style="display: flex;">
         <img src="imgs/pink-floyd-dark-side-of-the-moon-portada-significado.jpg" alt="" style="    width: auto;
@@ -45,7 +45,7 @@
     clip-path: circle();">
         <p class="playlist1 cancion" id="Domestic"  style="display:inline-block;margin-top: 6px;">Domestic Girlfriend - Opening</p>
         </div>
-      </details>
+      </details> -->
       <?php
        error_reporting(E_ERROR | E_PARSE);
 
@@ -161,17 +161,24 @@
   
       </div> 
       </section>
+        <section>
+        <h2 style="text-align:center;">Generos de musica de nuestra playlist</h2>
+        <div></div>
+        <div class="row" style="margin-left: 250px;margin-top:70px;">
+        <div class="col-3" styke="margin-rigth:20px;" data-genero=""><img src="imgs/pink-floyd-dark-side-of-the-moon-portada-significado.jpg" height="auto" width="65%"  style="clip-path: circle();"></div>
+        <div class="col-3" data-genero=""><img src="imgs/pink-floyd-dark-side-of-the-moon-portada-significado.jpg" height="auto" width="65%"  style="clip-path: circle();"></div>
+        <div class="col-3" data-genero=""><img src="imgs/pink-floyd-dark-side-of-the-moon-portada-significado.jpg" height="auto" width="65%"  style="clip-path: circle();"></div> 
+
+        </div>
+  </section>
+
     </div>
     </div>
     
    
   </div>
-  
-
-  <script src="script.js">
 
 
-  </script>
   <script>
 
   </script>
