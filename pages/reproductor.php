@@ -56,7 +56,7 @@
 
          }else{
            echo "
-           <p class='cancion'>".$prueba2["titulo_cancion"][$i]."</p>"  ;  
+           <p class='cancion cancioneslista' id='".$i."'>".$prueba2["titulo_cancion"][$i]."</p>"  ;  
          }
        }
        
@@ -90,10 +90,12 @@
     border-radius: 10px;border: solid 1px red;">
       <div class="col-3"></div>
       <div class="col-6">
-<i class="fa-solid fa-backward" style="margin-right: 20px;"></i>
-<i class="fa-solid fa-play" id="btn_start"></i>
+<i class="fa-solid fa-backward" style="margin-right: 20px;" id="back"></i>
+<i class="fa-solid fa-play" id="btn_start" ></i>
 <input type="range" id="prueba" value="0" max="283.08898" >
-<i class="fa-solid fa-forward" style="margin-left: 20px;"></i>
+<i class="fa-solid fa-circle-stop"></i>
+<i class="fa-solid fa-shuffle"></i>
+<i class="fa-solid fa-forward" style="margin-left: 20px;" id="next"></i>
 </div>  
 <div class="col-3"></div>
 </div>
