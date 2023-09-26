@@ -19,14 +19,13 @@
 
     <div class="col-6">
       <img src="imgs/jukebox.png" height="100px" class="logo">
-      <ul id="menu1_">
+      <ul id="menu1_" style="display: flex;
+    justify-content: center;">
         <a href="pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
         <li class="menu1">|</li>
        <a href="pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
         <li class="menu1">|</li>
         <li class="menu1">Editar PlayList</li>
-        <li class="menu1">|</li>
-        <li class="menu1">Sesion</li>
       </ul>
     </div>
     <div class="col-3">
@@ -36,12 +35,12 @@
         echo "<p style='    float: right;
         margin: 25px;
         border: solid;
-        padding: 20px'>Bienvenido:  ".$usuario_."<i class='fa-solid fa-user' style='margin-left:10px;'></i></p>";
+        padding: 20px'>Bienvenido:  ".$usuario_."<a href='pages/perfil.html'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a></p>";
       }else{
         echo "<p style='    float: right;
         margin: 25px;
         border: solid;
-        padding: 20px'>Registrarse</p>";
+        padding: 20px'><a href='pages/sesion.php'>Registrarse</a></p>";
       }
       ?>
   </div>
