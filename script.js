@@ -64,10 +64,9 @@ barra_audio.addEventListener("click",()=>{
 })
 
 function barra(){
-    if(count==0){
+    
         barra_audio.setAttribute("max",audio.duration)   
-        count++;
-    }
+
         if(barra_audio.value>=parseInt(audio.duration)){            
             barra_audio.value=0
             titulo_cancion=""
@@ -159,8 +158,12 @@ stop_btn.addEventListener("click",()=>{
 random_btn.addEventListener("click",()=>{
     cancion_index=Math.floor(Math.random()*jsonJS.titulo_cancion.length)
     console.log("------------")
+    while(cancion_index==index_anterior_cancion){
+        cancion_index=Math.floor(Math.random()*jsonJS.titulo_cancion.length)
+    }
     console.log(cancion_index+" "+index_anterior_cancion+" aui")
     playing_music()
+    
 })
 function changeimgnya(){
     imgsongsrep.src=jsonJS.imgsrc[cancion_index]
