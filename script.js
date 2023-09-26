@@ -66,7 +66,7 @@ barra_audio.addEventListener("click",()=>{
 function barra(){
     
         barra_audio.setAttribute("max",audio.duration)   
-    
+
         if(barra_audio.value>=parseInt(audio.duration)){            
             barra_audio.value=0
             titulo_cancion=""
@@ -151,9 +151,11 @@ function stopmusic(){
 stop_btn.addEventListener("click",()=>{
     cancion_index=0
     audio.currentTime=0
+    playing_music()
     stopmusic()
     clearInterval(interval_main)
-    barra_audio.value=0
+    barra_audio.value=audio.currentTime
+    console.log(cancion_index+"aqui nya")
 })
 random_btn.addEventListener("click",()=>{
     cancion_index=Math.floor(Math.random()*jsonJS.titulo_cancion.length)
