@@ -26,6 +26,7 @@ btn_start_end.addEventListener("click",musica)
 for(i=0;i<cancionesclick.length;i++){
     cancionesclick[i].addEventListener("click",(e)=>{
         cancion_index=e.currentTarget.id
+        console.log(cancion_index)
         playing_music()
     })
 }
@@ -56,7 +57,7 @@ backbtn.addEventListener("click",()=>{
     playing_music()
 
 })
-
+//pausamos la cancion
 stop_btn.addEventListener("click",()=>{
     cancion_index=0
     audio.currentTime=0
@@ -141,6 +142,5 @@ function barra(){
         
         barra_audio.value= audio.currentTime
     }
-
 
 }

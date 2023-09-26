@@ -30,8 +30,22 @@
       </ul>
     </div>
     <div class="col-3">
-    </div>
-
+      <?php
+      if(isset($_COOKIE["usuario"])){
+        $usuario_=$_COOKIE["usuario"];
+        echo "<p style='    float: right;
+        margin: 25px;
+        border: solid;
+        padding: 20px'>Bienvenido:  ".$usuario_."<i class='fa-solid fa-user' style='margin-left:10px;'></i></p>";
+      }else{
+        echo "<p style='    float: right;
+        margin: 25px;
+        border: solid;
+        padding: 20px'>Registrarse</p>";
+      }
+      ?>
+  </div>
+    
   </nav>
   <br>
   <div class="row playlist_back">

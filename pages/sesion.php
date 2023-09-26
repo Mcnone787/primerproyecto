@@ -1,3 +1,11 @@
+<?php
+
+
+if(isset($_POST["usuario"])){
+  setcookie("usuario", $_POST["usuario"],time()+60*60*24*30,"/");
+}
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -42,19 +50,9 @@
     <div class="col-6">
       <div style="margin: 0 auto;">
       <h2 style="text-align: center;">Crear usuario</h2>
-      <form action="" style="text-align: center;" id="" method="post" action="anadir_play.php">
+      <form action="" style="text-align: center;" id="" method="post" >
         <div id="formulario">
-        <input type='email' name='email' id='' class='formulario_inputs' placeholder='Correo electronico'>
         <input type="text" name="usuario" id="" class="formulario_inputs" placeholder="Nombre Usuario">
-        <input type='password' name='contraseña' id='' class='formulario_inputs' placeholder='Nombre Contraseña'>
-        
-        <div style="float: left;">
-            <input type="checkbox" style=""><label>Recordar contraseña ^.^ </label> 
-            
-        </div>
-        <br>  
-        <p style="margin-top: 20px;"><a href="">Ya tengo cuenta</a></p>
-      </div>
         <button type="submit" value="" style="background-color: #2c4d6c6e;
         border: 1px solid #2c4d6c6e;width: 50%;padding: 10px;margin-top: 30px;">Enviar </button>
       </form>
