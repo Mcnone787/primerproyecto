@@ -66,7 +66,7 @@ barra_audio.addEventListener("click",()=>{
 function barra(){
     
         barra_audio.setAttribute("max",audio.duration)   
-
+    
         if(barra_audio.value>=parseInt(audio.duration)){            
             barra_audio.value=0
             titulo_cancion=""
