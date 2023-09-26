@@ -213,6 +213,9 @@ summary{
 #img_songs{
   
   animation: rotation 7s infinite linear;
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
 }
 @keyframes rotation {
   from {

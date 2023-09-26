@@ -5,17 +5,27 @@ let div_global=document.getElementById("div_global")
 let barra_audio=document.getElementById("prueba")
 let btn_cerrar_rep=document.getElementById("btn_repro_cerrar")
 let nextbtn=document.getElementById("next")
+let imgsongsrep=document.getElementById("img_songs")
+let backbtn=document.getElementById("back")
+let random_btn=document.getElementById("random")
+let stop_btn=document.getElementById("stop")
 var audio = new Audio();
 let count=0
 let interval_main
 let cancion_index=0
-let index_anterior_cancion
-let backbtn=document.getElementById("back")
+let index_anterior_cancion=0
 let elementcancionsonando
 let cambioscolorant
 let cancionsonado=false
-let imgsongsrep=document.getElementById("img_songs")
+
+
+
 // <i class="fa-solid fa-pause"></i>
+
+elementcancionsonando=document.getElementById(cancion_index)
+elementcancionsonando.style.background="green"
+imgsongsrep.style.animationPlayState="paused"
+
 
 btn_start_end.addEventListener("click",musica)
  function musica(){
@@ -77,9 +87,10 @@ function barra(){
 nextbtn.addEventListener("click",()=> {
     console.log("entraa")
     cancion_index++;
-    if(cancion_index>jsonJS.titulo_cancion.length){
-        cancion_index--;
+    if(cancion_index>=jsonJS.titulo_cancion.length){
+        cancion_index=0;
     }
+    console.log("valor del indice "+cancion_index)
     playing_music()
 
    
@@ -97,7 +108,10 @@ backbtn.addEventListener("click",()=>{
 
 function playing_music(){
     btn_start.className="fa-solid fa-pause"
-    if(cancion_index>0){
+    console.log(cancion_index+" "+index_anterior_cancion)
+    cancionsonado=true;
+    if(cancionsonado==true){
+        console.log("entra")
         elementcancionsonando=document.getElementById(index_anterior_cancion)
         elementcancionsonando.style.background="#2c4d6c6e"
         elementcancionsonando=document.getElementById(cancion_index)
@@ -110,21 +124,23 @@ function playing_music(){
         elementcancionsonando.style.background="green"
     }
     else{
-       
+        console.log(cancion_index)
+        elementcancionsonando=document.getElementById(index_anterior_cancion)
+
         elementcancionsonando=document.getElementById(cancion_index)
-        elementcancionsonando.style.background="green"
+        elementcancionsonando.style.background="blue"
     }
     index_anterior_cancion=cancion_index;
     audio.src = jsonJS.cancionssrc[cancion_index]
-    
     barra_audio.value=audio.currentTime;
     playmusic()
-
+    changeimgnya()
     interval_main=setInterval(barra,1000)
+    
+    console.log("------------")
 }
 function playmusic(){
     imgsongsrep.style.animationPlayState="running"
-
     audio.play()
 }
 
@@ -132,4 +148,20 @@ function stopmusic(){
     btn_start.className="fa-solid fa-play"
     imgsongsrep.style.animationPlayState="paused"
     audio.pause()
+}
+stop_btn.addEventListener("click",()=>{
+    cancion_index=0
+    audio.currentTime=0
+    stopmusic()
+    clearInterval(interval_main)
+    barra_audio.value=0
+})
+random_btn.addEventListener("click",()=>{
+    cancion_index=Math.floor(Math.random()*jsonJS.titulo_cancion.length)
+    console.log("------------")
+    console.log(cancion_index+" "+index_anterior_cancion+" aui")
+    playing_music()
+})
+function changeimgnya(){
+    imgsongsrep.src=jsonJS.imgsrc[cancion_index]
 }

@@ -75,8 +75,8 @@
     <div class="col-12 visible" style="padding:0;border-left: 2px solid gray;" id="div_repr">
       <a href="../index.php"><i class="fa-solid fa-circle-xmark" style="float: right; font-size: 25px; margin-top: 20px;margin-right: 20px;" id="btn_repro_cerrar"></i></a>
       <div style="margin-top: 50px;">
-        <center> <img src="../imgs/pink-floyd-dark-side-of-the-moon-portada-significado.jpg" height="auto" width="65%" style="clip-path: circle();" 
-        id="img_songs" ></center>
+        <center> <img src="<?php echo $prueba2["imgsrc"][0]?>" height="auto" width="65%" style="clip-path: circle();" 
+        id="img_songs" alt="Imagen cancion" displ></center>
     </div>
     
     
@@ -93,8 +93,8 @@
 <i class="fa-solid fa-backward" style="margin-right: 20px;" id="back"></i>
 <i class="fa-solid fa-play" id="btn_start" ></i>
 <input type="range" id="prueba" value="0" max="283.08898" >
-<i class="fa-solid fa-circle-stop" style="margin-right: 20px;font-size: 20px;margin-left: 20px;"></i>
-<i class="fa-solid fa-shuffle"></i>
+<i class="fa-solid fa-circle-stop" style="margin-right: 20px;font-size: 20px;margin-left: 20px;" id="stop"></i>
+<i class="fa-solid fa-shuffle" id="random"></i>
 <i class="fa-solid fa-forward" style="margin-left: 20px;" id="next"></i>
 </div>  
 <div class="col-3"></div>
