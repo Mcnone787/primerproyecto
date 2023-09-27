@@ -36,13 +36,13 @@
  <div class="row" style="margin-top: 100px;">
     <div class="col-3"></div>
     <div class="col-6" >
-        <div style="border: solid;">
+        <div style="">
             <h2 style="text-align: center;">Perfil</h2>
             <p style="text-align: center;">Usuario: Admin </p>
             <h4>Canciones mas escuchadas segun tu interacciones</h4>
-            <div style="overflow: auto;height: 100px;">
-                <div style="border: gray 1px solid;width: 50%;">
-                <img src="" alt="cancionimg">
+            <div style="overflow: auto;height: 100px; width: 100%; margin-top: 20px;" id="div_songs">
+                <div style="">
+                <img src="../imgs/jukebox.png" alt="cancionimg" height="70px" width="auto">
                 <p style="display: inline-block;">info</p>
                 </div>
                 <div>

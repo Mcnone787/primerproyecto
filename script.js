@@ -13,7 +13,7 @@ let cancion_index=0
 let index_anterior_cancion=0
 let elementcancionsonando
 let cancionsonado=false
-
+console.log()
 
 elementcancionsonando=document.getElementById(cancion_index)
 elementcancionsonando.style.background="green"
@@ -27,6 +27,13 @@ for(i=0;i<cancionesclick.length;i++){
     cancionesclick[i].addEventListener("click",(e)=>{
         cancion_index=e.currentTarget.id
         console.log(cancion_index)
+        let cookie_canciones=JSON.parse(getCookie("canciones"))
+        console.log(cookie_canciones)
+        console.log(cookie_canciones.playlist)
+        cookie_canciones.playlist.push(jsonJS.playlistNombre)
+        cookie_canciones.cancion.push(cancion_index)
+        console.log(cookie_canciones)
+        guardarcambioscookie()
         playing_music()
     })
 }
@@ -144,3 +151,23 @@ function barra(){
     }
 
 }
+
+function guardarcambioscookie(cookie_canciones){
+    document.cookie="canciones="+JSON.stringify(cookie_canciones)+";path=/;"
+}
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }

@@ -35,7 +35,7 @@
         echo "<p style='    float: right;
         margin: 25px;
         border: solid;
-        padding: 20px'>Bienvenido:  ".$usuario_."<a href='pages/perfil.html'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a></p>";
+        padding: 20px'>Bienvenido:  ".$usuario_."<a href='pages/perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a></p>";
       }else{
         echo "<p style='    float: right;
         margin: 25px;

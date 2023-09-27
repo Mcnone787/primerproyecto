@@ -257,6 +257,9 @@ summary{
   font-size: 17px;
   margin-top: 20px;
 }
+#div_songs div{
+  border: gray 3px solid;width: 99%;margin-bottom: 20px;
+}
   .col-1 {
     width: 8.33%;
   }
