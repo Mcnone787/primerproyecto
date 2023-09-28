@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
   <script src="https://kit.fontawesome.com/ba24da5ac1.js" crossorigin="anonymous"></script>
-    <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link href="/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/x-icon" href="imgs/rastreo.png">
 
 
@@ -18,11 +18,11 @@
     </div>
 
     <div class="col-6">
-      <img src="../imgs/jukebox.png" height="100px" class="logo">
+      <img src="/imgs/jukebox.png" height="100px" class="logo">
       <ul id="menu1_">
         <a href="pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
         <li class="menu1">|</li>
-       <a href="pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
+       <a href="/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
         <li class="menu1">|</li>
         <li class="menu1">Editar PlayList</li>
         <li class="menu1">|</li>
@@ -88,7 +88,12 @@
     background-color: #2c4d6c6e;
     margin-top: 100px;
     border-radius: 10px;">
-      <div class="col-3"></div>
+      <div class="col-3">
+        <div >
+     <h4 style="text-align:center;">titulo</h4>
+     <p id="titulo" style="text-align:center;"></p>
+     </div>
+      </div>
       <div class="col-6">
 <i class="fa-solid fa-backward" style="margin-right: 20px;" id="back"></i>
 <i class="fa-solid fa-play" id="btn_start" ></i>
@@ -97,7 +102,12 @@
 <i class="fa-solid fa-shuffle" id="random"></i>
 <i class="fa-solid fa-forward" style="margin-left: 20px;" id="next"></i>
 </div>  
-<div class="col-3"></div>
+<div class="col-3">
+  <div>
+     <p>Autores</p>
+     <p id="autores"></p>
+    </div>
+</div>
 </div>
       </div>
   </div>

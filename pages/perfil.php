@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
   <script src="https://kit.fontawesome.com/ba24da5ac1.js" crossorigin="anonymous"></script>
-    <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link href="/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/x-icon" href="imgs/rastreo.png">
 
 

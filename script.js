@@ -13,12 +13,33 @@ let cancion_index=0
 let index_anterior_cancion=0
 let elementcancionsonando
 let cancionsonado=false
-console.log()
+
+
+let playlistcookies
+let date_main=new Date();
+let titulo_cancion=document.getElementById("titulo")
+let autores_cancion=document.getElementById("autores")
+if(getCookie("d")==""){
+
+}else{
+    playlistcookies=JSON.parse(getCookie("Playlists"))
+    if(playlistcookies.playlist.indexOf(jsonJS.playlistNombre)!=-1){
+        playlistcookies.fecha[playlistcookies.playlist.indexOf(jsonJS.playlistNombre)]=date_main.getDay()+"/"+date_main.getMonth()+"/"+date_main.getFullYear()
+    }else{
+        playlistcookies.playlist.push(jsonJS.playlistNombre)
+        playlistcookies.fecha.push(date_main.getDay()+"/"+date_main.getMonth()+"/"+date_main.getFullYear())
+    }
+    guardarcambioscookie("Playlists",playlistcookies)
+
+}
+console.log(playlistcookies)
+
 
 elementcancionsonando=document.getElementById(cancion_index)
 elementcancionsonando.style.background="green"
 imgsongsrep.style.animationPlayState="paused"
-
+titulo_cancion.textContent=jsonJS.titulo_cancion[cancion_index]
+autores_cancion.textContent=jsonJS.cantantes[cancion_index]
 
 btn_start_end.addEventListener("click",musica)
 
@@ -27,17 +48,26 @@ for(i=0;i<cancionesclick.length;i++){
     cancionesclick[i].addEventListener("click",(e)=>{
         cancion_index=e.currentTarget.id
         console.log(cancion_index)
-        let cookie_canciones=JSON.parse(getCookie("canciones"))
+        let cookie_canciones
+       if(getCookie("canciones")==""){
 
+       }   else{
+        cookie_canciones=JSON.parse(getCookie("canciones"))
         if(cookie_canciones.titulo_cancion.indexOf(e.currentTarget.textContent)!=-1){
             cookie_canciones.click[cookie_canciones.titulo_cancion.indexOf(e.currentTarget.textContent)]++
+            console.log(  cookie_canciones.click[cookie_canciones.titulo_cancion.indexOf(e.currentTarget.textContent)]+"aqui")
+
         }else{
+            cookie_canciones.playlist.push(jsonJS.playlistNombre)
             cookie_canciones.titulo_cancion.push(e.currentTarget.textContent)
             cookie_canciones.click.push(1)
             cookie_canciones.srcimg.push(jsonJS.imgsrc[e.currentTarget.id])
             console.log(cookie_canciones)
-        }        
-        guardarcambioscookie(cookie_canciones)
+
+        }     
+        guardarcambioscookie("canciones",cookie_canciones)
+
+       }
         playing_music()
     })
 }
@@ -135,6 +165,8 @@ function playing_music(){
     index_anterior_cancion=cancion_index;
     audio.src = jsonJS.cancionssrc[cancion_index]
     barra_audio.value=audio.currentTime;
+    titulo_cancion.textContent=jsonJS.titulo_cancion[cancion_index]
+    autores_cancion.textContent=jsonJS.cantantes[cancion_index]
     playmusic()
     changeimgnya()
     interval_main=setInterval(barra,1000)    
@@ -156,8 +188,8 @@ function barra(){
 
 }
 
-function guardarcambioscookie(cookie_canciones){
-    document.cookie="canciones="+JSON.stringify(cookie_canciones)+";path=/;"
+function guardarcambioscookie(nombre,cookie_canciones){
+    document.cookie=nombre+"="+JSON.stringify(cookie_canciones)+";path=/;"
 }
 function getCookie(cname) {
     let name = cname + "=";

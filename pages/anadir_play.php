@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
   <script src="https://kit.fontawesome.com/ba24da5ac1.js" crossorigin="anonymous"></script>
-    <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link href="/style.css" rel="stylesheet" type="text/css" />
   
 
 </head>
@@ -17,7 +17,7 @@
     </div>
 
    <div class="col-6">
-      <a href="../index.php"><img src="../imgs/jukebox.png" height="100px" class="logo"></a>
+      <a href="/index.php"><img src="/imgs/jukebox.png" height="100px" class="logo"></a>
       <ul id="menu1_">
         <a > <li class="menu1">Añadir Playlist</li></a>
       <li class="menu1" >|</li>
@@ -25,7 +25,6 @@
         <li class="menu1">|</li>
         <li class="menu1">Editar PlayList</li>
         <li class="menu1">|</li>
-        <li class="menu1">Sesion</li>
       </ul>
     </div>
     <div class="col-3">

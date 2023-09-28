@@ -5,13 +5,16 @@ if(isset($_POST["usuario"])){
   setcookie("usuario", $_POST["usuario"],time()+60*60*24*30,"/");
   $valores_reproductor=(object)[
     'playlist'=>[],
-    'posicion'=>[],
     'titulo_cancion'=>[],
     'srcimg'=>[],
     'click'=>[]
-  
+  ];
+  $playlists_=(object)[
+    'playlist'=>[],
+    'fecha'=>[]
   ];
   setcookie("canciones", json_encode($valores_reproductor),time()+60*60*24*30,"/");
+  setcookie("Playlists", json_encode($playlists_),time()+60*60*24*30,"/");
 }
 
 ?>
