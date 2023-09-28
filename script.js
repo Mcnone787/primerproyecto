@@ -28,12 +28,16 @@ for(i=0;i<cancionesclick.length;i++){
         cancion_index=e.currentTarget.id
         console.log(cancion_index)
         let cookie_canciones=JSON.parse(getCookie("canciones"))
-        console.log(cookie_canciones)
-        console.log(cookie_canciones.playlist)
-        cookie_canciones.playlist.push(jsonJS.playlistNombre)
-        cookie_canciones.cancion.push(cancion_index)
-        console.log(cookie_canciones)
-        guardarcambioscookie()
+
+        if(cookie_canciones.titulo_cancion.indexOf(e.currentTarget.textContent)!=-1){
+            cookie_canciones.click[cookie_canciones.titulo_cancion.indexOf(e.currentTarget.textContent)]++
+        }else{
+            cookie_canciones.titulo_cancion.push(e.currentTarget.textContent)
+            cookie_canciones.click.push(1)
+            cookie_canciones.srcimg.push(jsonJS.imgsrc[e.currentTarget.id])
+            console.log(cookie_canciones)
+        }        
+        guardarcambioscookie(cookie_canciones)
         playing_music()
     })
 }

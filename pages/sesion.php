@@ -5,7 +5,9 @@ if(isset($_POST["usuario"])){
   setcookie("usuario", $_POST["usuario"],time()+60*60*24*30,"/");
   $valores_reproductor=(object)[
     'playlist'=>[],
-    'cancion'=>[],
+    'posicion'=>[],
+    'titulo_cancion'=>[],
+    'srcimg'=>[],
     'click'=>[]
   
   ];
