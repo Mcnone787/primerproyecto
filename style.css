@@ -6,6 +6,7 @@
   word-wrap: break-word;
 
 }
+
 a{
   text-decoration: none;
 }
@@ -260,6 +261,7 @@ summary{
 #div_songs >div{
   border: gray 3px solid;width: 99%;margin-bottom: 20px;
 }
+
   .col-1 {
     width: 8.33%;
   }

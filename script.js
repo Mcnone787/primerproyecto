@@ -13,12 +13,13 @@ let cancion_index=0
 let index_anterior_cancion=0
 let elementcancionsonando
 let cancionsonado=false
-
-
+let cargado=false;
+let total_time_=document.getElementById("total_time_song")
 let playlistcookies
 let date_main=new Date();
 let titulo_cancion=document.getElementById("titulo")
 let autores_cancion=document.getElementById("autores")
+let timerepro=document.getElementById("time_repro")
 if(getCookie("d")==""){
 
 }else{
@@ -29,10 +30,12 @@ if(getCookie("d")==""){
         playlistcookies.playlist.push(jsonJS.playlistNombre)
         playlistcookies.fecha.push(date_main.getDay()+"/"+date_main.getMonth()+"/"+date_main.getFullYear())
     }
+    
     guardarcambioscookie("Playlists",playlistcookies)
 
 }
-console.log(playlistcookies)
+audio.src = jsonJS.cancionssrc[cancion_index]
+console.log("dawdadad")
 
 
 elementcancionsonando=document.getElementById(cancion_index)
@@ -120,11 +123,8 @@ function musica(){
     let ClassBtn=btn_start_end.className;
     switch(ClassBtn){
         case "fa-solid fa-play":
-            btn_start.className="fa-solid fa-pause"
-            if(cancionsonado==false){
                 playing_music()
                 cancionsonado=true
-            }
             playmusic()
         break;
         case "fa-solid fa-pause":
@@ -138,18 +138,24 @@ function changeimgnya(){
 }
 
 function playmusic(){
+    btn_start.className="fa-solid fa-pause"
+
     imgsongsrep.style.animationPlayState="running"
-    audio.play()
+    audio.play().then(()=>{
+        console.log("cargando cancion")
+    })
 }
 
 function stopmusic(){
     btn_start.className="fa-solid fa-play"
+
     imgsongsrep.style.animationPlayState="paused"
     audio.pause()
 }
 
 function playing_music(){
     btn_start.className="fa-solid fa-pause"
+
     cancionsonado=true;
     if(cancionsonado==true){
         elementcancionsonando=document.getElementById(index_anterior_cancion)
@@ -169,13 +175,19 @@ function playing_music(){
     autores_cancion.textContent=jsonJS.cantantes[cancion_index]
     playmusic()
     changeimgnya()
+    console.log("d entra de nuevo nya")
     interval_main=setInterval(barra,1000)    
+
+}
+audio.onloadedmetadata=()=>{
+    barra_audio.setAttribute("max",audio.duration)   
+    total_time_.textContent=calctime(audio.duration)
+
 }
 function barra(){
-    
-    barra_audio.setAttribute("max",audio.duration)   
+    timerepro.textContent=calctime(audio.currentTime)
 
-    if(barra_audio.value>=parseInt(audio.duration)){            
+    if(audio.ended){            
         barra_audio.value=0
         titulo_cancion=""
         btn_start.className="fa-solid fa-play"
@@ -185,7 +197,6 @@ function barra(){
         
         barra_audio.value= audio.currentTime
     }
-
 }
 
 function guardarcambioscookie(nombre,cookie_canciones){
@@ -206,4 +217,16 @@ function getCookie(cname) {
       }
     }
     return "";
+  }
+
+  function calctime(tiempo){
+    let mins=Math.floor(tiempo/60)
+    if(mins<10){
+        mins="0"+mins;
+    }
+    let seg=Math.floor(tiempo%60)
+    if(seg<10){
+        seg="0"+seg;
+    }
+    return mins+":"+seg
   }

@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
   <script src="https://kit.fontawesome.com/ba24da5ac1.js" crossorigin="anonymous"></script>
-    <link href="/style.css" rel="stylesheet" type="text/css" />
+    <link href="../style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/x-icon" href="imgs/rastreo.png">
-
+  
 
 </head>
 
@@ -82,27 +82,31 @@
     
     
     
-    <div class="row" style="height: 100px;
-    z-index: 2;
-    width: 100%;
+    <div class="row" style="
+        width: 100%;
     background-color: #2c4d6c6e;
     margin-top: 100px;
-    border-radius: 10px;">
-      <div class="col-3">
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 30px;">
+      <div class="">
         <div >
      <h4 style="text-align:center;">titulo</h4>
      <p id="titulo" style="text-align:center;"></p>
      </div>
       </div>
-      <div class="col-6">
-<i class="fa-solid fa-backward" style="margin-right: 20px;" id="back"></i>
-<i class="fa-solid fa-play" id="btn_start" ></i>
-<input type="range" id="prueba" value="0" max="283.08898" >
-<i class="fa-solid fa-circle-stop" style="margin-right: 20px;font-size: 20px;margin-left: 20px;" id="stop"></i>
-<i class="fa-solid fa-shuffle" id="random"></i>
-<i class="fa-solid fa-forward" style="margin-left: 20px;" id="next"></i>
+      <div class="">
+        <i class="fa-solid fa-backward" style="margin-right: 20px;" id="back"></i>
+        <i class="fa-solid fa-play" id="btn_start" ></i>
+        <p id="time_repro" style="display:inline-block;">00:00</p>
+        <input type="range" id="prueba" value="0" max="283.08898" >
+        <p id="total_time_song" style="display:inline-block;"></p>
+        <i class="fa-solid fa-circle-stop" style="margin-right: 20px;font-size: 20px;margin-left: 20px;" id="stop"></i>
+        <i class="fa-solid fa-shuffle" id="random"></i>
+        <i class="fa-solid fa-forward" style="margin-left: 20px;" id="next"></i>
 </div>  
-<div class="col-3">
+<div class="">
   <div>
      <p>Autores</p>
      <p id="autores"></p>
