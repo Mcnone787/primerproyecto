@@ -1,3 +1,19 @@
+<?php
+  $cookie_playlist_lista=json_decode($_COOKIE["Playlists_lista_"],true);
+  $posicion=array_search($_GET["playlist"],$cookie_playlist_lista["playlist"]);
+  
+  if($posicion==""){
+    array_push($cookie_playlist_lista["playlist"],$_GET["playlist"]);
+    array_push($cookie_playlist_lista["clicks"],1);
+  }else{
+
+    $cookie_playlist_lista["clicks"][$posicion]=$cookie_playlist_lista["clicks"][$posicion]+1;
+  }
+
+  setcookie("Playlists_lista_", json_encode($cookie_playlist_lista),time()+60*60*24*30,"/");
+  
+  
+?>
 <!DOCTYPE html>
 <html>
 
@@ -46,18 +62,9 @@
        foreach (glob("../playlist/".$_GET["playlist"].".json") as  $ficheros) {
        $prueba1=file_get_contents($ficheros);
        $prueba2=json_decode($prueba1,true);
-       
-       echo "
-       
-       ";
-       
        for($i=0;$i<count($prueba2["titulo_cancion"]);$i++){
-         if($prueba2["titulo_cancion"][$i]==null){
-
-         }else{
            echo "
            <p class='cancion cancioneslista' id='".$i."'>".$prueba2["titulo_cancion"][$i]."</p>"  ;  
-         }
        }
        
      }

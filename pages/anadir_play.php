@@ -74,11 +74,6 @@
   $url_img=[];
   $cantantes=[];
   $cover=[];
-  $nombrecancion=agregar_arrays_valores("titulo",$nombrecancion);
-  $url_canciones=agregar_arrays_valores("url_song",$url_canciones);
-  $url_img=agregar_arrays_valores("url_img",$url_img);
-  $cantantes=agregar_arrays_valores("cantantes",$cantantes);
-  $cover=agregar_arrays_valores("cover",$cover);
   $playlist=[
     "playlistNombre"=>$nombreplay,
     "titulo_cancion"=>$nombrecancion,
@@ -87,21 +82,7 @@
     "cantantes"=>$cantantes,
     "cover"=>$cover,
   ];   
-  function agregar_arrays_valores($input_name,$arraysubir){
-    $arraydevuelta=$arraysubir;
-    $count_main=count($_POST);
-    print_r($_POST);
-    for($i=0;$i<$count_main;$i++){
-      if(array_key_exists($input_name."".$i,$_POST)){
-        array_push($arraydevuelta,$_POST[$input_name."".$i]);
-      }else{
-
-      }
-      
-    }
-  
-return $arraydevuelta;
-  }
+ 
 $guardar= json_encode($playlist);
 echo $nombreplay;
 file_put_contents("../playlist/".$nombreplay.".json",$guardar);

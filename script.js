@@ -20,17 +20,20 @@ let date_main=new Date();
 let titulo_cancion=document.getElementById("titulo")
 let autores_cancion=document.getElementById("autores")
 let timerepro=document.getElementById("time_repro")
-if(getCookie("d")==""){
+if(getCookie("Playlists")==""){
 
 }else{
     playlistcookies=JSON.parse(getCookie("Playlists"))
-    if(playlistcookies.playlist.indexOf(jsonJS.playlistNombre)!=-1){
-        playlistcookies.fecha[playlistcookies.playlist.indexOf(jsonJS.playlistNombre)]=date_main.getDay()+"/"+date_main.getMonth()+"/"+date_main.getFullYear()
-    }else{
-        playlistcookies.playlist.push(jsonJS.playlistNombre)
-        playlistcookies.fecha.push(date_main.getDay()+"/"+date_main.getMonth()+"/"+date_main.getFullYear())
-    }
-    
+    console.log("entra uiii")
+    // if(playlistcookies.playlist.indexOf(jsonJS.playlistNombre)!=-1){
+    //     playlistcookies.fecha[playlistcookies.playlist.indexOf(jsonJS.playlistNombre)]=date_main.getDay()+"/"+date_main.getMonth()+"/"+date_main.getFullYear()
+    // }else{
+    //     playlistcookies.playlist.push(jsonJS.playlistNombre)
+    //     playlistcookies.fecha.push(date_main.getDay()+"/"+date_main.getMonth()+"/"+date_main.getFullYear())
+    // }
+    // console.log(playlistcookies)
+    playlistcookies.playlist[0]=(jsonJS.playlistNombre)
+        playlistcookies.fecha[0]=(date_main.getDate()+"/"+(date_main.getMonth()+1)+"/"+date_main.getFullYear())
     guardarcambioscookie("Playlists",playlistcookies)
 
 }

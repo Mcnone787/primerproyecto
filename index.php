@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -30,12 +33,13 @@
     </div>
     <div class="col-3">
       <?php
-      if(isset($_COOKIE["usuario"])){
-        $usuario_=$_COOKIE["usuario"];
+
+      if(isset($_SESSION["usuario"])){
+        $usuario_=$_SESSION["usuario"];
         echo "<p style='    float: right;
         margin: 25px;
         border: solid;
-        padding: 20px'>Bienvenido:  ".$usuario_."<a href='pages/perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a><i class='fa-solid fa-arrow-right-from-bracket'></i></p>";
+        padding: 20px'>Bienvenido:  ".$usuario_."<a href='pages/perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a><a href='pages/logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i></a></p>";
       }else{
         echo "<p style='    float: right;
         margin: 25px;
@@ -76,10 +80,8 @@
             foreach (glob("playlist/*.json") as  $ficheros) {
             $prueba1=file_get_contents($ficheros);
             $prueba2=json_decode($prueba1,true);
-            $infoextension=pathinfo(basename($ficheros));
-            $playlist_sinextension=basename($ficheros,'.'.$infoextension['extension']);
-            
-            echo "<a href='pages/reproductor.php?playlist=".$playlist_sinextension."'><p class='playlist_' style='text-align:center   ;'>".$playlist_sinextension ."</p></a>";
+
+            echo "<a href='pages/reproductor.php?playlist=".$prueba2["playlistNombre"]."'><p class='playlist_' style='text-align:center   ;'>".$prueba2["playlistNombre"] ."</p></a>";
             
           }
         }

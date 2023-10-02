@@ -1,8 +1,9 @@
 <?php
 
-
 if(isset($_POST["usuario"])){
-  setcookie("usuario", $_POST["usuario"],time()+60*60*24*30,"/");
+  session_start();
+  $_SESSION["usuario"]=$_POST["usuario"];
+
   $valores_reproductor=(object)[
     'playlist'=>[],
     'titulo_cancion'=>[],
@@ -13,8 +14,16 @@ if(isset($_POST["usuario"])){
     'playlist'=>[],
     'fecha'=>[]
   ];
+  $playlists_lista_=(object)[
+    'playlist'=>[],
+    'clicks'=>[]
+  ];
   setcookie("canciones", json_encode($valores_reproductor),time()+60*60*24*30,"/");
   setcookie("Playlists", json_encode($playlists_),time()+60*60*24*30,"/");
+  setcookie("Playlists_lista_", json_encode($playlists_lista_),time()+60*60*24*30,"/");
+  header('Location: /index.php');
+  exit;
+
 }
 
 ?>
