@@ -20,6 +20,7 @@ let date_main=new Date();
 let titulo_cancion=document.getElementById("titulo")
 let autores_cancion=document.getElementById("autores")
 let timerepro=document.getElementById("time_repro")
+let musicaacabado=false
 if(getCookie("Playlists")==""){
 
 }else{
@@ -126,8 +127,11 @@ function musica(){
     let ClassBtn=btn_start_end.className;
     switch(ClassBtn){
         case "fa-solid fa-play":
+            if(!cancionsonado){
                 playing_music()
                 cancionsonado=true
+            }
+                
             playmusic()
         break;
         case "fa-solid fa-pause":

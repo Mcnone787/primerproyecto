@@ -3,11 +3,19 @@ let externo=document.getElementById("ficheroexterno")
 let back_=document.getElementById("back_formulario")
 console.log("d")
 local.addEventListener("click",()=>{
-    back_.innerHTML=`<form action="" enctype="multipart/form-data" style="text-align: center;" id="" method="post" action="anadir_play.php">
+    back_.innerHTML=`
+    <p></p>
+    <form action="" enctype="multipart/form-data" style="text-align: center;" id="" method="post" action="anadir_play.php">
     <div id="formulario">
     <input type='text' name='titulo' id='' class='formulario_inputs' placeholder='Nombre cancion'>
-    <input type='file' name="url_img_local">
-    <input type='file' name="url_song_local">
+  <div style="width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  border: dotted;margin-top:10px;"> <label> Subir imagen de la cancion <input type='file' name="url_img_local" hidden></label></div>
+    <div style="width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    border: dotted;margin-top:10px;"><label>Subir fichero de la cancion <input type='file' name="url_song_local"  hidden></label></div>
     <input type='text' name='cantantes' id='' class='formulario_inputs' placeholder='Cantantes'>
     <input type='text' name='cover' id='' class='formulario_inputs' placeholder='Cover'>
   </div>

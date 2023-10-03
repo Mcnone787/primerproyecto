@@ -46,15 +46,12 @@ if(isset($_POST["usuario"])){
     </div>
 
    <div class="col-6">
-      <a href="../index.php"><img src="../imgs/jukebox.png" height="100px" class="logo"></a>
-      <ul id="menu1_">
-        <a > <li class="menu1">Añadir Playlist</li></a>
+   <a href="/index.php"><img src="/imgs/jukebox.png" height="100px" class="logo"></a>      <ul id="menu1_">
+        <a href="/pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
       <li class="menu1" >|</li>
-      <a href="anadir_cancion.php"><li class="menu1" >Añadir cancion</li></a>
+      <a href="/pages/anadir_cancion.php"><li class="menu1" >Añadir cancion</li></a>
         <li class="menu1">|</li>
-        <li class="menu1">Editar PlayList</li>
-        <li class="menu1">|</li>
-        <li class="menu1">Sesion</li>
+        <li class="menu1">Editar PlayList</li></a>
       </ul>
     </div>
     <div class="col-3">

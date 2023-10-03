@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
   <!DOCTYPE html>
   <html>
 
@@ -13,26 +16,39 @@
   </head>
 
   <body id="back1">
-    <nav class="row nav_main1">
-      <div class="col-3">
-      </div>
+  <nav class="row nav_main1">
+    <div class="col-3">
+    </div>
 
-      <div class="col-6">
-        <img src="../imgs/jukebox.png" height="100px" class="logo">
-        <ul id="menu1_">
-          <a href="pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
-          <li class="menu1">|</li>
-        <a href="pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
-          <li class="menu1">|</li>
-          <li class="menu1">Editar PlayList</li>
-          <li class="menu1">|</li>
-          <li class="menu1">Sesion</li>
-        </ul>
-      </div>
-      <div class="col-3">
-      </div>
+    <div class="col-6">
+    <a href="/index.php"><img src="/imgs/jukebox.png" height="100px" class="logo"></a>      <ul id="menu1_" style="display: flex;
+    justify-content: center;">
+        <a href="/pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
+        <li class="menu1">|</li>
+       <a href="/pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
+        <li class="menu1">|</li>
+        <li class="menu1">Editar PlayList</li>
+      </ul>
+    </div>
+    <div class="col-3">
+      <?php
 
-    </nav>
+      if(isset($_SESSION["usuario"])){
+        $usuario_=$_SESSION["usuario"];
+        echo "<p style='    float: right;
+        margin: 25px;
+        border: solid;
+        padding: 20px'>Bienvenido:  ".$usuario_."<a href='/pages/perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a><a href='/pages/logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i></a></p>";
+      }else{
+        echo "<p style='    float: right;
+        margin: 25px;
+        border: solid;
+        padding: 20px'><a href='/pages/sesion.php'>Registrarse</a></p>";
+      }
+      ?>
+  </div>
+    
+  </nav>
   <div class="row" style="margin-top: 50px;">
       <div class="col-12" >
           <div style="">
@@ -44,10 +60,9 @@
               <div style="overflow: auto;height: 200px; width: 60%; margin-top: 20px;margin:0 auto;/* width */::-webkit-scrollbar {
     width: 20px;}" id="div_songs">
               <?php
+              if(isset($_COOKIE["canciones"])){
                 $cookie_main=json_decode($_COOKIE["canciones"],true);
                 array_multisort($cookie_main["click"],SORT_DESC,$cookie_main["srcimg"],$cookie_main["titulo_cancion"]);
-              ?>
-                  <?php
                   echo  "<div style=''>
     <div style='display:flex;'>
     <img src='".$cookie_main["srcimg"][0]."' alt='cancionimg' height='90px' width='auto'>
@@ -60,21 +75,8 @@
     </div>
     </div>
     </div>";
-                      // for($i=0;$i<count($cookie_main["titulo_cancion"]);$i++){
-                      //   echo "
-                      //   <div style=''>
-                      //   <div style='display:flex;'>
-                      //   <img src='".$cookie_main["srcimg"][$i]."' alt='cancionimg' height='90px' width='auto'>
-                      //   <h4>Puesto numero ".($i+1)."</h4>
-                      //   <div style='display: flex;
-                      //   flex-direction: column;
-                      //   justify-content: center;'>
-                      //   <p >Nombre de la cancion: ".$cookie_main["titulo_cancion"][$i]." </p>
-                      //   <p>Has reproducido la cancion ".$cookie_main["click"][$i]." veces</p>
-                      //   </div>
-                      //   </div>
-                      //   </div>";
-                      // }
+              }
+               
                     ?>
                   
                   
@@ -97,22 +99,58 @@
             border: gray 3px solid;
       border-radius:20px;">
             <div style="padding:20px;border-right:solid;width:50%;">
+            <h4 style='text-align:center;'>Playlists mas escuchadas ordenadas de mas escucadas y alfabeticamente </h4>
+            <div style="display: flex;
+    flex-direction: row;
+    justify-content: center;;margin-top:20px;margin-bottom:20px;">
+                <a href="perfil.php?ordenado=alfabetic"> <button  style="color:black; ">Ordenar alfabeticamente</button></a>
+                <a href="perfil.php?ordenado=escuchadas"><button style="color:black;margin-left:10px">Ordenar de mas escucadas a menos escuchadas</button></a>
+                </div>
             <?php
               if(isset($_COOKIE["Playlists_lista_"])){
                 $UltimaPlaylistsEscojida=json_decode($_COOKIE["Playlists_lista_"],true);
-                array_multisort($UltimaPlaylistsEscojida["clicks"],$UltimaPlaylistsEscojida["playlist"]);
-                array_multisort($UltimaPlaylistsEscojida["playlist"],SORT_DESC,$UltimaPlaylistsEscojida["playlist"]);
+
+                if(isset($_GET["ordenado"])){
+                  switch($_GET["ordenado"]){
+                    case "escuchadas":
+                      array_multisort($UltimaPlaylistsEscojida["clicks"],SORT_DESC,$UltimaPlaylistsEscojida["playlist"]);
+
+                      break;
+                      case "alfabetic":
+                        array_multisort($UltimaPlaylistsEscojida["playlist"],SORT_DESC,$UltimaPlaylistsEscojida["clicks"]);
+                      break; 
+                      default:
+                      break;
+                  }
+                }
                 echo "<div style=''>
-                <h4 style='text-align:center;'>Playlists mas escuchadas ordenadas de mas escucadas y alfabeticamente </h4>
-
-                <div style=''>
-                <p >Nombre de la cancion: ".$UltimaPlaylistsEscojida["playlist"][0]." </p>
-                <p >Veces reproducidas: ".$UltimaPlaylistsEscojida["clicks"][0]." </p>
-
-                </div>
-                </div>";
-              }
-              
+                <div style='display:flex;flex-direction: row;
+                justify-content: center; margin-top:10px;'>
+                            <div style='display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            margin-top: 20px;'>
+                                <p style='text-align:center;'>Nombre Playlists </p>";
+                for($i=0;$i<count($UltimaPlaylistsEscojida["playlist"]);$i++){
+                 echo "<p style='text-align:center;margin-top:10px;'>".$UltimaPlaylistsEscojida["playlist"][$i]." </p>";
+                }
+                echo "
+                          </div>
+                          <div style='display: flex;
+                          flex-direction: column;
+                          justify-content: center;
+                          margin-top: 20px;margin-left:20px;'>
+                          <p style='margin-left:10px;text-align:center;'>Veces reproducidas la playlist </p>";
+                          for($i=0;$i<count($UltimaPlaylistsEscojida["playlist"]);$i++){
+                            echo "                                <p style='text-align:center;margin-top:10px;'>".$UltimaPlaylistsEscojida["clicks"][$i]." </p>
+                            ";
+                           }
+                           echo "
+                          </div>
+                          </div> 
+                          </div>  "; 
+              } 
+                           
                 
               ?>
             </div>
@@ -147,26 +185,6 @@
                
               ?></div>
             </div>
-            
-                  <?php
-                
-                      // for($i=0;$i<count($cookie_main["titulo_cancion"]);$i++){
-                      //   echo "
-                      //   <div style=''>
-                      //   <div style='display:flex;'>
-                      //   <img src='".$cookie_main["srcimg"][$i]."' alt='cancionimg' height='90px' width='auto'>
-                      //   <h4>Puesto numero ".($i+1)."</h4>
-                      //   <div style='display: flex;
-                      //   flex-direction: column;
-                      //   justify-content: center;'>
-                      //   <p >Nombre de la cancion: ".$cookie_main["titulo_cancion"][$i]." </p>
-                      //   <p>Has reproducido la cancion ".$cookie_main["click"][$i]." veces</p>
-                      //   </div>
-                      //   </div>
-                      //   </div>";
-                      // }
-                    ?>
-                  
                   
 
           <div style="margin-bottom:50px;"></div>

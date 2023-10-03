@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -12,24 +15,38 @@
 </head>
 
 <body id="back1">
-  <nav class="row nav_main1">
+<nav class="row nav_main1">
     <div class="col-3">
     </div>
 
-   <div class="col-6">
-      <a href="/index.php"><img src="/imgs/jukebox.png" height="100px" class="logo"></a>
-      <ul id="menu1_">
-        <a > <li class="menu1">Añadir Playlist</li></a>
-      <li class="menu1" >|</li>
-      <a href="anadir_cancion.php"><li class="menu1" >Añadir cancion</li></a>
+    <div class="col-6">
+    <a href="/index.php"><img src="/imgs/jukebox.png" height="100px" class="logo"></a>      <ul id="menu1_" style="display: flex;
+    justify-content: center;">
+        <a href="/pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
+        <li class="menu1">|</li>
+       <a href="/pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
         <li class="menu1">|</li>
         <li class="menu1">Editar PlayList</li>
-        <li class="menu1">|</li>
       </ul>
     </div>
     <div class="col-3">
-    </div>
+      <?php
 
+      if(isset($_SESSION["usuario"])){
+        $usuario_=$_SESSION["usuario"];
+        echo "<p style='    float: right;
+        margin: 25px;
+        border: solid;
+        padding: 20px'>Bienvenido:  ".$usuario_."<a href='pages/perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a><a href='pages/logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i></a></p>";
+      }else{
+        echo "<p style='    float: right;
+        margin: 25px;
+        border: solid;
+        padding: 20px'><a href='/pages/sesion.php'>Registrarse</a></p>";
+      }
+      ?>
+  </div>
+    
   </nav>
 
   <br>
@@ -44,11 +61,6 @@
       <form action="" style="text-align: center;" id="" method="post" action="anadir_play.php">
         <div id="formulario">
         <input type="text" name="nombre" id="" class="formulario_inputs" placeholder="Nombre PlayList">
-        <input type='text' name='titulo0' id='' class='formulario_inputs' placeholder='Nombre cancion'>
-        <input type="text" name="url_song0" id="" class="formulario_inputs" placeholder="Url cancion">
-        <input type='text' name='url_img0' id='' class='formulario_inputs' placeholder='Url Imagen'>
-        <input type='text' name='cantantes0' id='' class='formulario_inputs' placeholder='Cantantes'>
-        <input type='text' name='cover0' id='' class='formulario_inputs' placeholder='Cover'>
       </div>
         <button type="submit" value="" style="background-color: #2c4d6c6e;
         border: 1px solid #2c4d6c6e;width: 50%;padding: 10px;margin-top: 30px;">Enviar </button>
@@ -56,12 +68,7 @@
     </div>
     </div>
     <div class="col-3">
-      <div style="border: 2px solid #2c4d6c6e !important;padding: 20px;">
-        <button id="btn_add_inputs" style="background-color: #2c4d6c6e;
-        border: 1px solid #2c4d6c6e;width: 50%;padding: 10px;    margin-top: 30px;
-    margin-left: 60px;
-    margin-bottom: 20px;">Añadir otra Cancion</button>
-      </div>
+      
       
     </div>
   </section>
@@ -84,10 +91,8 @@
   ];   
  
 $guardar= json_encode($playlist);
-echo $nombreplay;
 file_put_contents("../playlist/".$nombreplay.".json",$guardar);
 ?>
-  <script src="../formulario.js"></script>
  
   <!--
   This script places a badge on your repl's full-browser view back to your repl's cover
