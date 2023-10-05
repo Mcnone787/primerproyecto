@@ -15,26 +15,24 @@
 </head>
 
 <body id="back1">
-<nav class="row nav_main1">
-    <div class="col-3">
-    </div>
-
-    <div class="col-6">
-    <a href="/index.php"><img src="/imgs/jukebox.png" height="100px" class="logo"></a>      <ul id="menu1_" style="display: flex;
+<nav class="row nav_main1  parent" >
+   
+   <div class="div1">
+   <center> <img src="../imgs/jukebox.png" height="100px" class="logo"></center>     <center> <ul id="menu1_" style="display: flex;
     justify-content: center;">
-        <a href="/pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
+        <a href="pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
         <li class="menu1">|</li>
-       <a href="/pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
-        <li class="menu1">|</li>
-        <li class="menu1">Editar PlayList</li>
+       <a href="pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
       </ul>
+      </center>
     </div>
-    <div class="col-3">
+    
+    <div class="div2" style=" float: right;">
       <?php
 
       if(isset($_SESSION["usuario"])){
         $usuario_=$_SESSION["usuario"];
-        echo "<p style='    float: right;
+        echo "<p style='   
         margin: 25px;
         border: solid;
         padding: 20px'>Bienvenido:  ".$usuario_."<a href='pages/perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a><a href='pages/logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i></a></p>";
@@ -42,12 +40,14 @@
         echo "<p style='    float: right;
         margin: 25px;
         border: solid;
-        padding: 20px'><a href='/pages/sesion.php'>Registrarse</a></p>";
+        padding: 20px'><a href='pages/sesion.php'>Registrarse</a></p>";
       }
       ?>
   </div>
     
   </nav>
+ 
+
   <section class="row">
     <div class="col-3">
     <div style="border: 2px solid #2c4d6c6e !important;padding: 30px;">
@@ -86,24 +86,27 @@
     <?php
  
  
- ini_set('display_errors', 0);
 
 
 
-  $nombreplaylist=$_POST['playlist'];
-  $contenidocancion=file_get_contents("../songs/".$_GET['cancion'].".json");
-  $cancion=json_decode($contenidocancion,true);
-  $fichero_playlist=file_get_contents("../playlist/".$nombreplaylist.".json");
-  $playlist=json_decode($fichero_playlist,true);
-  print_r($playlist["titulo_cancion"]);
-  print_r($cancion["titulo_cancion"]);
-  array_push($playlist["titulo_cancion"],$cancion["titulo_cancion"]);
-  array_push($playlist["imgsrc"],$cancion["imgsrc"]);
-  array_push($playlist["cancionssrc"],$cancion["cancionssrc"]);
-  array_push($playlist["cantantes"],$cancion["cantantes"]);
-  array_push($playlist["cover"],$cancion["cover"]);
-  $guardar=json_encode($playlist);
-  file_put_contents("../playlist/".$nombreplaylist.".json",$guardar);
+  
+  if(isset($_POST['playlist'])){
+    $nombreplaylist=$_POST['playlist'];
+    $contenidocancion=file_get_contents("../songs/".$_GET['cancion'].".json");
+    print_r($contenidocancion);
+    $cancion=json_decode($contenidocancion,true);
+    $fichero_playlist=file_get_contents("../playlist/".$nombreplaylist.".json");
+    $playlist=json_decode($fichero_playlist,true);
+  print_r($cancion);
+    array_push($playlist["titulo_cancion"],$cancion["titulo_cancion"]);
+    array_push($playlist["imgsrc"],$cancion["imgsrc"]);
+    array_push($playlist["cancionssrc"],$cancion["cancionssrc"]);
+    array_push($playlist["cantantes"],$cancion["cantantes"]);
+    array_push($playlist["cover"],$cancion["cover"]);
+    $guardar=json_encode($playlist);
+    file_put_contents("../playlist/".$nombreplaylist.".json",$guardar);
+  }
+
 ?>
   </section>
   <script src="../formulario.js"></script>

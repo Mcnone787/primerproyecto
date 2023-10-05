@@ -16,39 +16,39 @@
   </head>
 
   <body id="back1">
-  <nav class="row nav_main1">
-    <div class="col-3">
-    </div>
-
-    <div class="col-6">
-    <a href="/index.php"><img src="/imgs/jukebox.png" height="100px" class="logo"></a>      <ul id="menu1_" style="display: flex;
+  <nav class="row nav_main1  parent" >
+   
+   <div class="div1">
+   <center> <img src="../imgs/jukebox.png" height="100px" class="logo"></center>     <center> <ul id="menu1_" style="display: flex;
     justify-content: center;">
-        <a href="/pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
+        <a href="pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
         <li class="menu1">|</li>
-       <a href="/pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
-        <li class="menu1">|</li>
-        <li class="menu1">Editar PlayList</li>
+       <a href="pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
       </ul>
+      </center>
     </div>
-    <div class="col-3">
+    
+    <div class="div2" style=" float: right;">
       <?php
 
       if(isset($_SESSION["usuario"])){
         $usuario_=$_SESSION["usuario"];
-        echo "<p style='    float: right;
+        echo "<p style='   
         margin: 25px;
         border: solid;
-        padding: 20px'>Bienvenido:  ".$usuario_."<a href='/pages/perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a><a href='/pages/logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i></a></p>";
+        padding: 20px'>Bienvenido:  ".$usuario_."<a href='pages/perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a><a href='pages/logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i></a></p>";
       }else{
         echo "<p style='    float: right;
         margin: 25px;
         border: solid;
-        padding: 20px'><a href='/pages/sesion.php'>Registrarse</a></p>";
+        padding: 20px'><a href='pages/sesion.php'>Registrarse</a></p>";
       }
       ?>
   </div>
     
   </nav>
+ 
+
   <div class="row" style="margin-top: 50px;">
       <div class="col-12" >
           <div style="">
@@ -62,6 +62,9 @@
               <?php
               if(isset($_COOKIE["canciones"])){
                 $cookie_main=json_decode($_COOKIE["canciones"],true);
+                if(count($cookie_main["titulo_cancion"])>0){
+
+                
                 array_multisort($cookie_main["click"],SORT_DESC,$cookie_main["srcimg"],$cookie_main["titulo_cancion"]);
                   echo  "<div style=''>
     <div style='display:flex;'>
@@ -75,6 +78,7 @@
     </div>
     </div>
     </div>";
+  }
               }
                
                     ?>
@@ -117,7 +121,7 @@
 
                       break;
                       case "alfabetic":
-                        array_multisort($UltimaPlaylistsEscojida["playlist"],SORT_DESC,$UltimaPlaylistsEscojida["clicks"]);
+                        array_multisort($UltimaPlaylistsEscojida["playlist"],$UltimaPlaylistsEscojida["clicks"]);
                       break; 
                       default:
                       break;
@@ -158,6 +162,8 @@
             <?php
               if(isset($_COOKIE["Playlists"])){
                 $UltimaPlaylistsEscojida=json_decode($_COOKIE["Playlists"],true);
+            if(count($UltimaPlaylistsEscojida["playlist"])>0){
+  
 
                 echo "<div style=''>
                 <h4 style='text-align:center;'>Ultima playList escuchada</h4>
@@ -181,6 +187,9 @@
                            
                 </div>
                 </div>";
+              }else{
+                echo "<h3>No hay informacion aun de tu interaccion</h3>";
+              }
               }
                
               ?></div>

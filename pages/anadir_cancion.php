@@ -15,40 +15,39 @@
 </head>
 
 <body id="back1">
-<nav class="row nav_main1">
-    <div class="col-3">
-    </div>
-
-    <div class="col-6">
-    <a href="/index.php"><img src="/imgs/jukebox.png" height="100px" class="logo"></a>
-      <ul id="menu1_" style="display: flex;
+<nav class="row nav_main1  parent" >
+   
+   <div class="div1">
+   <center> <img src="../imgs/jukebox.png" height="100px" class="logo"></center>     <center> <ul id="menu1_" style="display: flex;
     justify-content: center;">
-        <a href="/pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
+        <a href="pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
         <li class="menu1">|</li>
-       <a href="/pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
-        <li class="menu1">|</li>
-        <li class="menu1">Editar PlayList</li>
+       <a href="pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
       </ul>
+      </center>
     </div>
-    <div class="col-3">
+    
+    <div class="div2" style=" float: right;">
       <?php
 
       if(isset($_SESSION["usuario"])){
         $usuario_=$_SESSION["usuario"];
-        echo "<p style='    float: right;
+        echo "<p style='   
         margin: 25px;
         border: solid;
-        padding: 20px'>Bienvenido:  ".$usuario_."<a href='/pages/perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a><a href='pages/logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i></a></p>";
+        padding: 20px'>Bienvenido:  ".$usuario_."<a href='pages/perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a><a href='pages/logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i></a></p>";
       }else{
         echo "<p style='    float: right;
         margin: 25px;
         border: solid;
-        padding: 20px'><a href='/pages/sesion.php'>Registrarse</a></p>";
+        padding: 20px'><a href='pages/sesion.php'>Registrarse</a></p>";
       }
       ?>
   </div>
     
   </nav>
+ 
+
   <section class="row">
     <div class="col-3">
     <button  value="" style="background-color: #2c4d6c6e;
@@ -87,7 +86,7 @@ if(isset($_POST["titulo"])){
     $nombrecancion=$_POST["titulo"];
 }
 if(isset($_POST["url_song_externo"])){
-      $nombrecancion=$_POST["url_song_externo"];
+      $url_canciones=$_POST["url_song_externo"];
 }
 if(isset($_POST["url_img"])){
       $url_img=$_POST["url_img"];
@@ -99,7 +98,7 @@ if(isset($_POST["cover"])){
         $cover=$_POST["cover"];
 }
 
-if(isset($_FILES["url_song_local"]) && isset($_FILES["url_img_local"])){
+if(isset($_FILES["url_song_local"]) || isset($_FILES["url_img_local"])){
   
   $tmp_nameimg=$_FILES["url_img_local"]["tmp_name"];
   $url_img="../imgs/".$_FILES["url_img_local"]["name"];
@@ -119,7 +118,7 @@ if(isset($_FILES["url_song_local"]) && isset($_FILES["url_img_local"])){
     "cover"=>$cover,
   ];   
 
-
+print_r($cancion);
 $guardar= json_encode($cancion);
 file_put_contents("../songs/".$nombrecancion.".json",$guardar);
 ?>

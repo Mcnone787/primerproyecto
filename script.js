@@ -7,6 +7,11 @@ let imgsongsrep=document.getElementById("img_songs")
 let backbtn=document.getElementById("back")
 let random_btn=document.getElementById("random")
 let stop_btn=document.getElementById("stop")
+let titulo_cancion=document.getElementById("titulo")
+let autores_cancion=document.getElementById("autores")
+let timerepro=document.getElementById("time_repro")
+let back_audiofal=document.getElementById("audio_falso")
+let total_time_=document.getElementById("total_time_song")
 var audio = new Audio();
 let interval_main
 let cancion_index=0
@@ -14,15 +19,9 @@ let index_anterior_cancion=0
 let elementcancionsonando
 let cancionsonado=false
 let cargado=false;
-let total_time_=document.getElementById("total_time_song")
 let playlistcookies
 let date_main=new Date();
-let titulo_cancion=document.getElementById("titulo")
-let autores_cancion=document.getElementById("autores")
-let timerepro=document.getElementById("time_repro")
-let musicaacabado=false
 if(getCookie("Playlists")==""){
-
 }else{
     playlistcookies=JSON.parse(getCookie("Playlists"))
     console.log("entra uiii")
@@ -146,16 +145,23 @@ function changeimgnya(){
 
 function playmusic(){
     btn_start.className="fa-solid fa-pause"
+    back_audiofal.innerHTML=`
+    <img src="/imgs/bueno.gif" alt=""    height="25px">
 
+    `
     imgsongsrep.style.animationPlayState="running"
     audio.play().then(()=>{
         console.log("cargando cancion")
     })
+    
 }
 
 function stopmusic(){
     btn_start.className="fa-solid fa-play"
+    back_audiofal.innerHTML=`
+   
 
+    `
     imgsongsrep.style.animationPlayState="paused"
     audio.pause()
 }
@@ -200,6 +206,17 @@ function barra(){
         btn_start.className="fa-solid fa-play"
         clearInterval(interval_main)
         console.log("d")
+       if(cancion_index+1>=jsonJS.titulo_cancion.length){
+        index_anterior_cancion=cancion_index;
+        cancion_index=0;
+        playing_music();
+
+       }else{
+        index_anterior_cancion=cancion_index;
+        cancion_index++;
+        playing_music();
+
+       }
     }else{
         
         barra_audio.value= audio.currentTime
@@ -237,3 +254,19 @@ function getCookie(cname) {
     }
     return mins+":"+seg
   }
+
+  window.addEventListener("keyup",(e)=>{
+    let keycode=e.keyCode
+    console.log(keycode)
+    switch(keycode) {
+        case 32:
+            musica()
+        break;
+        case 39:
+            audio.currentTime=audio.currentTime+5;
+        break;
+        case 37:
+            audio.currentTime=audio.currentTime-5;
+        break;
+    }
+  })

@@ -11,32 +11,82 @@
   <script src="https://kit.fontawesome.com/ba24da5ac1.js" crossorigin="anonymous"></script>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/x-icon" href="imgs/rastreo.png">
-
+    <style>
+.botonMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;    
+    height: 3rem;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background-color: #99B2B7; 
+    border: 0;
+    color: white;
+    cursor: pointer;
+}
+/* Se le quita el borde azul cuando se pulsa en Chrome */
+.botonMenu:focus {
+    outline: none;
+}
+/* Cuando es pulsado, se quita el translate que lo ocultaba */
+.botonMenu:focus + .principal {
+    transform: translateX(0rem);
+}
+/* Se posiciona y se oculta con translate */
+nav.principal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 15rem;
+    background-color: #7A6A53;
+    transform: translateX(15rem);
+    transition: 1s all;
+}
+/* Estilos sencillos para decorar los links */
+nav.principal ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+nav.principal a {
+    display: block;
+    color: #D5DED9;
+    padding: 1rem;
+    transition: .5s all;
+}
+nav.principal a:hover {
+    text-decoration: none;
+    background-color: #948C75;
+}
+  </style>
 
 </head>
 
 <body id="back1">
-  <nav class="row nav_main1">
-    <div class="col-3">
-    </div>
 
-    <div class="col-6">
-      <img src="imgs/jukebox.png" height="100px" class="logo">
-      <ul id="menu1_" style="display: flex;
+  <nav class="row nav_main1  parent" >
+  
+   <div class="div1">
+     <center> <img src="imgs/jukebox.png" height="100px" class="logo"></center>
+     <center> <ul id="menu1_" style="display: flex;
     justify-content: center;">
         <a href="pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
         <li class="menu1">|</li>
        <a href="pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
-        <li class="menu1">|</li>
-        <li class="menu1">Editar PlayList</li>
+    
       </ul>
+      </center>
     </div>
-    <div class="col-3">
+    
+    <div class="div2" style=" float: right;">
       <?php
 
       if(isset($_SESSION["usuario"])){
         $usuario_=$_SESSION["usuario"];
-        echo "<p style='    float: right;
+        echo "<p style='   
         margin: 25px;
         border: solid;
         padding: 20px'>Bienvenido:  ".$usuario_."<a href='pages/perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a><a href='pages/logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i></a></p>";
@@ -50,6 +100,8 @@
   </div>
     
   </nav>
+ 
+
   <br>
   <div class="row playlist_back">
     <div class="col-3" style="border-top: 2px  gray solid;">
@@ -81,7 +133,7 @@
             $prueba1=file_get_contents($ficheros);
             $prueba2=json_decode($prueba1,true);
 
-            echo "<a href='pages/reproductor.php?playlist=".$prueba2["playlistNombre"]."'><p class='playlist_' style='text-align:center   ;'>".$prueba2["playlistNombre"] ."</p></a>";
+            echo "<p class='playlist_' style='text-align:center   ;'><a href='pages/reproductor.php?playlist=".$prueba2["playlistNombre"]."'>".$prueba2["playlistNombre"] ."</a><a href='/pages/eliminar_playlist.php?prueba=".$ficheros."'><i class='fa-solid fa-xmark' style='float:right;    font-size: 20px;'></i></a></p>";
             
           }
         }
