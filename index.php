@@ -105,16 +105,8 @@ nav.principal a:hover {
   <div class="row playlist_back">
     <div class="col-3" style="border-top: 2px  gray solid;">
       <h2 style="text-align: center;">PlayLists </h2>
-      <!-- <details >
-        <summary>Playlist1</summary>
-        <div style="display: flex;">
-        <img src="imgs/pink-floyd-dark-side-of-the-moon-portada-significado.jpg" alt="" style="    width: auto;
-    height: 29px;
-    clip-path: circle();">
-        <p class="playlist1 cancion" id="Domestic"  style="display:inline-block;margin-top: 6px;">Domestic Girlfriend - Opening</p>
-        </div>
-      </details> -->
-      <?php
+     <!-- comprovamos si hay playlist creadas -->
+     <?php
        error_reporting(E_ERROR | E_PARSE);
 
 
@@ -127,6 +119,7 @@ nav.principal a:hover {
             mira la web xd mira la musica xd xdxxd</p>";
        
           }else{
+            //cargamos playlists
           $i_main=0;
             foreach (glob("playlist/*.json") as  $ficheros) {
             $prueba1=file_get_contents($ficheros);
@@ -157,7 +150,8 @@ nav.principal a:hover {
 ">
       <h2 style="text-align: center;margin-bottom: 50px;margin-top:50px;">Canciones de nuestra gramola ^^</h2>
       <div class="cancion_put" style="">
-       <?php
+      <!-- cargamos la lista de manera ordenada para mostrar en la pagina -->
+      <?php
        $i_main=1;
        $salto_depaginas=7 ;
        $count=0;
@@ -197,7 +191,7 @@ nav.principal a:hover {
       </div>
       <div style="margin:0 auto;text-align: center;margin: bottom 50px;margin-top:30px;" id="paginacion_numeros">
       <i class="fa-solid fa-arrow-left" id="paginacionIzFl"  style="padding-rigth:10px;"></i>
-
+    <!-- cargamos las paginaciones -->
     <?php
     $count_paginas=0;
         for($i=1;$i<=$i_main;$i++){

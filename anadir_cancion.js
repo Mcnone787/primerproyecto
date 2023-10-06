@@ -1,9 +1,11 @@
-let local=document.getElementById("ficherolocal")
-let externo=document.getElementById("ficheroexterno")
-let back_=document.getElementById("back_formulario")
+//Creamos los elementos del formulario
+//uso interpolacion que es una anotacion mas comoda para poder escribir las estructuras
+let local = document.getElementById("ficherolocal")
+let externo = document.getElementById("ficheroexterno")
+let back_ = document.getElementById("back_formulario")
 console.log("d")
-local.addEventListener("click",()=>{
-    back_.innerHTML=`
+local.addEventListener("click", () => {
+    back_.innerHTML = `
     <p></p>
     <form action="" enctype="multipart/form-data" style="text-align: center;" id="" method="post" action="anadir_play.php">
     <div id="formulario">
@@ -23,8 +25,8 @@ local.addEventListener("click",()=>{
     border: 1px solid #2c4d6c6e;width: 50%;padding: 10px;margin-top: 30px;">Enviar </button>
   </form>`
 })
-externo.addEventListener("click",()=>{
-    back_.innerHTML=`<form action="" enctype="multipart/form-data" style="text-align: center;" id="" method="post" action="anadir_play.php">
+externo.addEventListener("click", () => {
+    back_.innerHTML = `<form action="" enctype="multipart/form-data" style="text-align: center;" id="" method="post" action="anadir_play.php">
     <div id="formulario">
     <input type='text' name='titulo' id='' class='formulario_inputs' placeholder='Nombre cancion'>
     <input type='text' name='url_img' id='' class='formulario_inputs' placeholder='Url Imagen'>
