@@ -1,3 +1,5 @@
 <?php
-unlink("../".$_GET["prueba"])
+unlink("../".$_GET["prueba"]);
+header('Location: /index.php');
+exit;
 ?>

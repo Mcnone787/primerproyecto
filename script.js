@@ -49,7 +49,8 @@ autores_cancion.textContent=jsonJS.cantantes[cancion_index]
 
 btn_start_end.addEventListener("click",musica)
 
-//asignamos a todos los elementos un evento de click y cojemos sus ids por que lo aprovecharemos para usarlos como indices ^^
+//asignamos a todos los elementos un evento de click y cojemos sus ids por que lo aprovecharemos para usarlos como indices ^^ y asigna
+//mos para las cookies
 for(i=0;i<cancionesclick.length;i++){
     cancionesclick[i].addEventListener("click",(e)=>{
         cancion_index=e.currentTarget.id
@@ -113,7 +114,7 @@ stop_btn.addEventListener("click",()=>{
     clearInterval(interval_main)
     barra_audio.value=audio.currentTime
 })
-
+//boton de aleatorio para la playlit de las canciones
 random_btn.addEventListener("click",()=>{
     cancion_index=Math.floor(Math.random()*jsonJS.titulo_cancion.length)
     while(cancion_index==index_anterior_cancion){
@@ -122,6 +123,7 @@ random_btn.addEventListener("click",()=>{
     playing_music()
     
 })
+//cambio de estado del boton de las canciones
 function musica(){
     let ClassBtn=btn_start_end.className;
     switch(ClassBtn){
@@ -138,11 +140,12 @@ function musica(){
         break;
     }
  }
-
+//cambiamos la imagen de la cancion que se esta reproduciendo
 function changeimgnya(){
     imgsongsrep.src=jsonJS.imgsrc[cancion_index]
 }
-
+//hacemos que cambie el icono del reproductor a start y empieza a reproducir la musica
+//ulilizo el uso de inerpolaciones es una notacion mas comoda a la hora de hacer strings
 function playmusic(){
     btn_start.className="fa-solid fa-pause"
     back_audiofal.innerHTML=`
@@ -150,12 +153,9 @@ function playmusic(){
 
     `
     imgsongsrep.style.animationPlayState="running"
-    audio.play().then(()=>{
-        console.log("cargando cancion")
-    })
-    
-}
 
+}
+//paramos la musica y cambiamos el icono
 function stopmusic(){
     btn_start.className="fa-solid fa-play"
     back_audiofal.innerHTML=`
@@ -165,7 +165,7 @@ function stopmusic(){
     imgsongsrep.style.animationPlayState="paused"
     audio.pause()
 }
-
+//detecatamos la cancion que va a sonar y cambiamos el fondo etc... jugando simpre con los indices
 function playing_music(){
     btn_start.className="fa-solid fa-pause"
 
@@ -192,6 +192,8 @@ function playing_music(){
     interval_main=setInterval(barra,1000)    
 
 }
+//hacemos un evento para el audio para detectar cuando se ha cargado la infomracion de la cancion de reproducir una vez hecho se le asgina 
+//el atibuto max al input range
 audio.onloadedmetadata=()=>{
     barra_audio.setAttribute("max",audio.duration)   
     total_time_.textContent=calctime(audio.duration)

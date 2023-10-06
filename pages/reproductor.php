@@ -1,9 +1,4 @@
-
-
 <?php
-if(isset($_COOKIE["Playlists_lista_"])){
-
-
   $cookie_playlist_lista=json_decode($_COOKIE["Playlists_lista_"],true);
   $posicion=array_search($_GET["playlist"],$cookie_playlist_lista["playlist"]);
   
@@ -16,9 +11,10 @@ if(isset($_COOKIE["Playlists_lista_"])){
   }
 
   setcookie("Playlists_lista_", json_encode($cookie_playlist_lista),time()+60*60*24*30,"/");
-}  
   
+  session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -42,9 +38,9 @@ if(isset($_COOKIE["Playlists_lista_"])){
    <div class="div1">
    <center> <img src="../imgs/jukebox.png" height="100px" class="logo"></center>     <center> <ul id="menu1_" style="display: flex;
     justify-content: center;">
-        <a href="pages/anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
+        <a href="anadir_play.php"> <li class="menu1">Añadir Playlist</li></a>
         <li class="menu1">|</li>
-       <a href="pages/anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
+       <a href="anadir_cancion.php"> <li class="menu1">Añadir cancion</li></a>
       </ul>
       </center>
     </div>
@@ -57,12 +53,12 @@ if(isset($_COOKIE["Playlists_lista_"])){
         echo "<p style='   
         margin: 25px;
         border: solid;
-        padding: 20px'>Bienvenido:  ".$usuario_."<a href='pages/perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a><a href='pages/logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i></a></p>";
+        padding: 20px'>Bienvenido:  ".$usuario_."<a href='perfil.php'><i class='fa-solid fa-user' style='margin-left:10px;'></i></a><a href='logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i></a></p>";
       }else{
         echo "<p style='    float: right;
         margin: 25px;
         border: solid;
-        padding: 20px'><a href='pages/sesion.php'>Registrarse</a></p>";
+        padding: 20px'><a href='sesion.php'>Registrarse</a></p>";
       }
       ?>
   </div>
@@ -85,7 +81,7 @@ if(isset($_COOKIE["Playlists_lista_"])){
        $prueba2=json_decode($prueba1,true);
        for($i=0;$i<count($prueba2["titulo_cancion"]);$i++){
            echo "
-           <p class='cancion cancioneslista' id='".$i."'>".$prueba2["titulo_cancion"][$i]."<a href='/pages/eliminar_cancion.php?prueba=".$prueba1."&id=".$i."'><i class='fa-solid fa-xmark' style='float:right;    font-size: 20px;'></i></a></p>"  ;  
+           <p class='cancion cancioneslista' id='".$i."'>".$prueba2["titulo_cancion"][$i]."</p>"  ;  
        }
        
      }
@@ -106,8 +102,6 @@ if(isset($_COOKIE["Playlists_lista_"])){
         <center> <img src="<?php echo $prueba2["imgsrc"][0]?>" height="auto" width="65%" style="clip-path: circle();" 
         id="img_songs" alt="Imagen cancion" displ></center>
     </div>
-    
-    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwall.alphacoders.com%2Ftag%2Feru-chitanda-wallpapers%3Flang%3DSpanish&psig=AOvVaw3ax7oPjZCP3jhwQzjpb8gl&ust=1696546608073000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPDv5OG-3YEDFQAAAAAdAAAAABAb" alt="" width="100%" heigth="12318px">
     
     
     <div class="row" style="
@@ -164,3 +158,5 @@ if(isset($_COOKIE["Playlists_lista_"])){
 </body>
 
 </html>
+
+

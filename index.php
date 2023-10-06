@@ -66,7 +66,6 @@ nav.principal a:hover {
 </head>
 
 <body id="back1">
-eq2e2qe
   <nav class="row nav_main1  parent" >
   
    <div class="div1">
@@ -227,17 +226,7 @@ eq2e2qe
       <i class="fa-solid fa-arrow-right" id="paginacionDF"></i>
   
       </div> 
-      </section>
-        <section>
-        <h2 style="text-align:center;">Generos de musica de nuestra playlist</h2>
-        <div></div>
-        <div class="row" style="margin-left: 250px;margin-top:70px;">
-        <div class="col-3" styke="margin-rigth:20px;" data-genero=""><img src="imgs/pink-floyd-dark-side-of-the-moon-portada-significado.jpg" height="auto" width="65%"  style="clip-path: circle();"></div>
-        <div class="col-3" data-genero=""><img src="imgs/pink-floyd-dark-side-of-the-moon-portada-significado.jpg" height="auto" width="65%"  style="clip-path: circle();"></div>
-        <div class="col-3" data-genero=""><img src="imgs/pink-floyd-dark-side-of-the-moon-portada-significado.jpg" height="auto" width="65%"  style="clip-path: circle();"></div> 
-
-        </div>
-  </section>
+      
 
     </div>
     </div>
