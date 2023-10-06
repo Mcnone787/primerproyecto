@@ -153,7 +153,7 @@ function playmusic(){
 
     `
     imgsongsrep.style.animationPlayState="running"
-
+    audio.play()
 }
 //paramos la musica y cambiamos el icono
 function stopmusic(){
@@ -186,6 +186,7 @@ function playing_music(){
     barra_audio.value=audio.currentTime;
     titulo_cancion.textContent=jsonJS.titulo_cancion[cancion_index]
     autores_cancion.textContent=jsonJS.cantantes[cancion_index]
+    console.log("adhadhwdh")
     playmusic()
     changeimgnya()
     console.log("d entra de nuevo nya")
