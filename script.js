@@ -59,6 +59,7 @@ for(i=0;i<cancionesclick.length;i++){
        if(getCookie("canciones")==""){
 
        }   else{
+        console.log("aqui"+getCookie("canciones"))
         cookie_canciones=JSON.parse(getCookie("canciones"))
         if(cookie_canciones.titulo_cancion.indexOf(e.currentTarget.textContent)!=-1){
             cookie_canciones.click[cookie_canciones.titulo_cancion.indexOf(e.currentTarget.textContent)]++
@@ -170,16 +171,12 @@ function playing_music(){
     btn_start.className="fa-solid fa-pause"
 
     cancionsonado=true;
-    if(cancionsonado==true){
+    if(cancionsonado){
         elementcancionsonando=document.getElementById(index_anterior_cancion)
         elementcancionsonando.style.background="#2c4d6c6e"
         elementcancionsonando=document.getElementById(cancion_index)
         elementcancionsonando.style.background="green"
         
-    }else{
-        elementcancionsonando=document.getElementById(index_anterior_cancion)
-        elementcancionsonando=document.getElementById(cancion_index)
-        elementcancionsonando.style.background="blue"
     }
     index_anterior_cancion=cancion_index;
     audio.src = jsonJS.cancionssrc[cancion_index]
@@ -208,7 +205,6 @@ function barra(){
         titulo_cancion=""
         btn_start.className="fa-solid fa-play"
         clearInterval(interval_main)
-        console.log("d")
        if(cancion_index+1>=jsonJS.titulo_cancion.length){
         index_anterior_cancion=cancion_index;
         cancion_index=0;
